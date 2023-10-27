@@ -17,6 +17,7 @@ public class Menu {
         System.out.println("3. Mostrar contactos");
         System.out.println("4. Editar contacto");
         System.out.println("5. Salir");
+        System.out.println("-------------------------------");
         System.out.print("Porfavor, seleccione una opción: ");
     }
 
@@ -29,6 +30,7 @@ public class Menu {
                 String telefono = scanner.next();
                 Contacto contacto = new Contacto(nombre, telefono);
                 agenda.agregarContacto(contacto);
+                System.out.println("¡Contacto agregado exitosamente!");
                 break;
             case 2:
                 System.out.print("Ingrese nombre del contacto a eliminar: ");
@@ -38,6 +40,7 @@ public class Menu {
                     if (c.getNombre().equals(nombreEliminar)) {
                         agenda.eliminarContacto(c);
                         System.out.println("Contacto eliminado.");
+                        System.out.println("-------------------------------");
                         return;
                     }
                 }
@@ -47,7 +50,7 @@ public class Menu {
                 ArrayList<Contacto> listaContactos = agenda.getContactos();
                 for (Contacto c : listaContactos) {
                     System.out.println("Nombre: " + c.getNombre() + ", Teléfono: " + c.getTelefono());
-                    System.out.println("¡Contacto agregado exitosamente!");
+                    System.out.println("-------------------------------");
                 }
                 break;
             case 4:
@@ -60,6 +63,7 @@ public class Menu {
                     if (c.getNombre().equals(nombreEditar)) {
                         agenda.editarContacto(c, nuevoTelefono);
                         System.out.println("Contacto editado.");
+                        System.out.println("-------------------------------");
                         return;
                     }
                 }

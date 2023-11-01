@@ -80,5 +80,12 @@ public class Menu {
     public Scanner getScanner() {
         return scanner;
     }
+    public void Ejecucion() {
+        while (true) {
+            mostrarMenu();
+            int opcion = Integer.parseInt(scanner.next());
+            ejecutarOpcion(opcion);
+        }
+    }
 }
 

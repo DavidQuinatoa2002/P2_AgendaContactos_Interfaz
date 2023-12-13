@@ -1,6 +1,7 @@
 import java.util.ArrayList;
 
-public class Agenda {
+public class
+Agenda {
     private ArrayList<Contacto> contactos;
 
     public Agenda() {

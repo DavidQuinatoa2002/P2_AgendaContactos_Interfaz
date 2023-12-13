@@ -12,11 +12,12 @@ public class Menu {
 
     public void mostrarMenu() {
         System.out.println("-----BIENVENDIO A SU AGENDA PERSONAL------");
-        System.out.println("1. Agregar contacto");
-        System.out.println("2. Eliminar contacto");
-        System.out.println("3. Mostrar contactos");
-        System.out.println("4. Editar contacto");
-        System.out.println("5. Salir");
+        System.out.println("1. Agregar contacto regular");
+        System.out.println("2. Agregar contacto VIP");
+        System.out.println("3. Eliminar contacto");
+        System.out.println("4. Mostrar contactos");
+        System.out.println("5. Editar contacto");
+        System.out.println("6. Salir");
         System.out.println("-------------------------------");
         System.out.print("Porfavor, seleccione una opción: ");
     }
@@ -24,15 +25,26 @@ public class Menu {
     public void ejecutarOpcion(int opcion) {
         switch (opcion) {
             case 1:
-                System.out.print("Ingrese nombre del contacto: ");
-                String nombre = scanner.next();
+                System.out.print("Ingrese nombre del contacto regular: ");
+                String nombreRegular = scanner.next();
                 System.out.print("Ingrese número de teléfono: ");
-                String telefono = scanner.next();
-                Contacto contacto = new Contacto(nombre, telefono);
-                agenda.agregarContacto(contacto);
-                System.out.println("¡Contacto agregado exitosamente!");
+                String telefonoRegular = scanner.next();
+                Contacto contactoRegular = new Contacto(nombreRegular, telefonoRegular);
+                agenda.agregarContacto(contactoRegular);
+                System.out.println("¡Contacto regular agregado exitosamente!");
                 break;
             case 2:
+                System.out.print("Ingrese nombre del contacto VIP: ");
+                String nombreVIP = scanner.next();
+                System.out.print("Ingrese número de teléfono: ");
+                String telefonoVIP = scanner.next();
+                System.out.print("Ingrese email del contacto VIP: ");
+                String emailVIP = scanner.next();
+                ContactoVIP contactoVIP = new ContactoVIP(nombreVIP, telefonoVIP, emailVIP);
+                agenda.agregarContacto(contactoVIP);
+                System.out.println("¡Contacto VIP agregado exitosamente!");
+                break;
+            case 3:
                 System.out.print("Ingrese nombre del contacto a eliminar: ");
                 String nombreEliminar = scanner.next();
                 ArrayList<Contacto> contactos = agenda.getContactos();
@@ -46,14 +58,19 @@ public class Menu {
                 }
                 System.out.println("Contacto no encontrado.");
                 break;
-            case 3:
+            case 4:
                 ArrayList<Contacto> listaContactos = agenda.getContactos();
                 for (Contacto c : listaContactos) {
-                    System.out.println("Nombre: " + c.getNombre() + ", Teléfono: " + c.getTelefono());
+                    System.out.print("Nombre: " + c.getNombre() + ", Teléfono: " + c.getTelefono());
+                    if (c instanceof ContactoVIP) {
+                        contactoVIP = (ContactoVIP) c;
+                        System.out.print(", Email: " + contactoVIP.getEmail());
+                    }
+                    System.out.println();
                     System.out.println("-------------------------------");
                 }
                 break;
-            case 4:
+            case 5:
                 System.out.print("Ingrese nombre del contacto a editar: ");
                 String nombreEditar = scanner.next();
                 System.out.print("Ingrese nuevo número de teléfono: ");
@@ -69,7 +86,7 @@ public class Menu {
                 }
                 System.out.println("Contacto no encontrado.");
                 break;
-            case 5:
+            case 63:
                 System.out.println("¡Agenda Cerrada!");
                 System.exit(0);
                 break;

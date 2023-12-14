@@ -11,7 +11,7 @@ public class InterfazGrafica extends JFrame {
     public InterfazGrafica() {
         agenda = new Agenda();
 
-        setTitle("Agenda Personal");
+        setTitle("Agenda Contactos");
         setSize(1080, 620);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);

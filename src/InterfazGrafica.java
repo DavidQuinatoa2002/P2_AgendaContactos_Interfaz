@@ -12,32 +12,34 @@ public class InterfazGrafica extends JFrame {
         agenda = new Agenda();
 
         setTitle("Agenda Personal");
-        setSize(1250, 980);
+        setSize(1080, 620);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setLayout(null);
+        setResizable(false);
+        setLocationRelativeTo(null);
 
         btnAgregarRegular = new JButton("Agregar Contacto Regular");
-        btnAgregarRegular.setBounds(20, 20, 200, 30);
+        btnAgregarRegular.setBounds(20, 100, 200, 30);
         add(btnAgregarRegular);
 
         btnAgregarVIP = new JButton("Agregar Contacto VIP");
-        btnAgregarVIP.setBounds(20, 60, 200, 30);
+        btnAgregarVIP.setBounds(20, 140, 200, 30);
         add(btnAgregarVIP);
 
         btnMostrar = new JButton("Mostrar Contactos");
-        btnMostrar.setBounds(20, 100, 200, 30);
+        btnMostrar.setBounds(20, 180, 200, 30);
         add(btnMostrar);
 
         btnEliminar = new JButton("Eliminar Contacto");
-        btnEliminar.setBounds(20, 140, 200, 30);
+        btnEliminar.setBounds(20, 220, 200, 30);
         add(btnEliminar);
 
         textArea = new JTextArea();
-        textArea.setBounds(250, 50, 800, 800);
+        textArea.setBounds(250, 40, 750, 500);
         add(textArea);
 
         btnSalir = new JButton("Salir");
-        btnSalir.setBounds(20, 180, 200, 30);
+        btnSalir.setBounds(20, 260, 200, 30);
         add(btnSalir);
 
         btnAgregarRegular.addActionListener(new ActionListener() {
@@ -85,7 +87,7 @@ public class InterfazGrafica extends JFrame {
                                 ContactoVIP contactoVIP = (ContactoVIP) c;
                                 textArea.append(", Email: " + contactoVIP.getEmail());
                             }
-
+                            textArea.append("\n");
                             textArea.append("\n-------------------------------\n");
                         }
                     }
@@ -114,9 +116,14 @@ public class InterfazGrafica extends JFrame {
             }
         });
 
+        setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+
         btnSalir.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                System.exit(0);
+                int confirmacion = JOptionPane.showConfirmDialog(null, "¿Seguro que quieres salir?", "Confirmar salida", JOptionPane.YES_NO_OPTION);
+                if (confirmacion == JOptionPane.YES_OPTION) {
+                    System.exit(0);
+                }
             }
         });
 
